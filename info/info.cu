@@ -1,3 +1,27 @@
+/*
+    This program is provided as is without any guarantees or warranty.
+    By using this program the user accepts the full responsibility for any
+    and all damages that may occur. The author is not responsible for any
+    consequences of the use of this program.
+
+    * This program prints information about the GPU device.
+    * The program uses the CUDA runtime API to query the device properties.
+
+    * The program takes an optional argument, which is the device id.
+    * If no argument is provided, the program will use the default device (device 0).
+
+    * The program can be compiled using the following command:
+        * nvcc info.cu -o info
+    * to run the program, use the following command:
+        * ./info <device_id>
+
+    @Author: Daniel Rossi
+    @Date: 2023-03-11
+    @License: MIT
+    @Version: 1.0
+    @
+*/
+
 #include <stdio.h>
 #include <cuda_runtime.h>
 

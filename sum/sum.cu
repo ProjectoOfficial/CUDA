@@ -1,4 +1,9 @@
 /*
+    This program is provided as is without any guarantees or warranty.
+    By using this program the user accepts the full responsibility for any
+    and all damages that may occur. The author is not responsible for any
+    consequences of the use of this program.
+
     * This program adds two arrays of floats using CUDA.
     * 
     * The program first allocates memory for the arrays on the host and device.
@@ -9,10 +14,13 @@
     * The program then verifies the result.
     * Finally, the program frees the memory on the device and host.
     
+    * The program takes one command line argument, N, which is the size of the arrays.
+    * If no argument is provided, the default value of N is 1.
+
     * The program can be compiled using the following command:
         * nvcc sum.cu -o sum
     * to run the program, use the following command:
-        * ./sum
+        * ./sum <N>
 
     @Author: Daniel Rossi
     @Date: 2023-03-08

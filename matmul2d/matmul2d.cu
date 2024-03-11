@@ -1,3 +1,38 @@
+/*
+    This program is provided as is without any guarantees or warranty.
+    By using this program the user accepts the full responsibility for any
+    and all damages that may occur. The author is not responsible for any
+    consequences of the use of this program.
+
+    * This program performs matrix multiplication using CUDA.
+    * The matrices are generated using three different methods: zeros, ones, random.
+    * The program uses the following functions:
+        * getSharedMemory: prints the amount of shared memory per block
+        * matmul: the CUDA kernel which performs the matrix multiplication
+        * matrix: generates a matrix of size n x m of three types: zeros, ones, random
+        * print_matrix: prints a matrix of size n x m
+        * cpu_matmul: performs the matrix multiplication on the CPU
+        * equals: checks if two matrices are equal
+        * parse_args: parses the command line arguments
+    
+    * The program takes three command line arguments:
+        * n: the number of rows of the first matrix
+        * m: the number of columns of the first matrix and the number of rows of the second matrix
+        * p: the number of columns of the second matrix
+    * If the number of command line arguments is less than 3, the program uses the default values of 3 for n, m, and p.
+    * If the number of command line arguments is 1, the program uses the value of the first argument for n, m, and p.
+    
+    * The program can be compiled using the following command:
+        * nvcc matmul2d.cu -o matmul
+    * to run the program, use the following command:
+        * ./matmul <n> <m> <p>
+
+    @Author: Daniel Rossi
+    @Date: 2023-03-11
+    @License: MIT
+    @Version: 1.0
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
