@@ -8,6 +8,6 @@
 ### Prerequisites:
 1. install NVIDIA drivers: [https://ubuntu.com/server/docs/nvidia-drivers-installation](https://www.nvidia.com/download/index.aspx)
 2. install CUDA on:
-   2.1. Ubuntu: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
-   2.2. Windows: https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html
+   - Ubuntu: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
+   - Windows: https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html
 4. check everything with ```nvidia-smi``` and ```nvcc -v```
