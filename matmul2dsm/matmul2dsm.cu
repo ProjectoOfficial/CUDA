@@ -4,11 +4,11 @@
     and all damages that may occur. The author is not responsible for any
     consequences of the use of this program.
 
-    * This program performs matrix multiplication using CUDA.
+    * This program performs matrix multiplication using CUDA and shared memory.
     * The matrices are generated using three different methods: zeros, ones, random.
     * The program uses the following functions:
         * getSharedMemory: prints the amount of shared memory per block
-        * matmul: the CUDA kernel which performs the matrix multiplication
+        * matmul_sm: the CUDA kernel which performs the matrix multiplication using shared memory
         * matrix: generates a matrix of size n x m of three types: zeros, ones, random
         * print_matrix: prints a matrix of size n x m
         * cpu_matmul: performs the matrix multiplication on the CPU
@@ -28,7 +28,7 @@
         * ./matmul <n> <m> <p>
 
     @Author: Daniel Rossi
-    @Date: 2023-03-11
+    @Date: 2023-03-12
     @License: MIT
     @Version: 1.0
 */
@@ -53,7 +53,7 @@ enum {
  * The shared memory is a memory space that is shared between all threads in a block.
  * It is fast because it is located on-chip, but it is limited in size.
 */
-__global__ void matmul2dOpt(float *a, float *b, float *c, size_t n, size_t m, size_t p) {
+__global__ void matmul_sm(float *a, float *b, float *c, size_t n, size_t m, size_t p) {
     // Calculate the global row and column indices
     size_t row = blockIdx.y * blockDim.y + threadIdx.y; // this is the row index for the current thread
     size_t col = blockIdx.x * blockDim.x + threadIdx.x; // this is the column index for the current thread
@@ -234,7 +234,7 @@ int main(int argc, char** argv) {
     cudaEventCreate(&stop);
     
     cudaEventRecord(start, 0);
-    matmul2dOpt<<<dimGrid, dimBlock>>>(dev_a, dev_b, dev_c, n, m, p);
+    matmul_sm<<<dimGrid, dimBlock>>>(dev_a, dev_b, dev_c, n, m, p);
     cudaEventRecord(stop, 0);
     
     cudaEventSynchronize(stop); // Wait for the stop event to complete
